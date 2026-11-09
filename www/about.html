@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap"
+        rel="stylesheet">
+    <title>About</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Outfit', Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    nav {
+        background: linear-gradient(to right, #ffff, #a9d2f9);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        box-shadow: 0px 1px 5px grey;
+    }
+
+    .burger {
+        font-size: 24px;
+        color: rgb(206, 130, 130);
+        width: 50px;
+        background-color: none;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background-color: rgb(187, 238, 238);
+        width: 150px;
+        height: 100%;
+        box-sizing: border-box;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+    }
+
+    .nav-links.open {
+        transform: translateX(0);
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: black;
+        display: block;
+        padding: 10px 0px;
+        font-size: 18px;
+    }
+
+    .nav-links:hover {
+        text-decoration: underline;
+    }
+
+    .overlay {
+        background-color: aliceblue;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        z-index: 5;
+    }
+
+    .overlay.open {
+        display: block;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    #LoocImg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0px;
+    }
+
+    #LoocImg img {
+        border-radius: 10px;
+        box-shadow: 0px 2px 5px grey;
+    }
+
+    .statholder,
+    .holder {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .statholder .statcard,
+    .holder .card {
+        background-color: white;
+        width: 48%;
+        border: 1px solid;
+        padding: 10px;
+        margin: 5px 0px;
+        border-radius: 5px;
+        box-shadow: 0px 1px 5px grey;
+    }
+
+    #header {
+        margin: 20px 5px;
+        padding: 10px;
+        background-color: #a9d2f9;
+        border-radius: 10px;
+        box-shadow: 0px 5px 5px grey;
+    }
+
+    #header button {
+        width: 100%;
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        font-size: large;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .profile-card {
+        margin: 20px auto;
+        background-color: white;
+        border: 1px solid rgb(196, 196, 196);
+        box-shadow: 0px 2px 5px grey;
+        border-radius: 10px;
+        width: 80%;
+        padding: 20px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <nav>
+        <button class="burger" onclick="toggleMenu()">&#9776;</button>
+        <h1><strong>Looc</strong></h1>
+    </nav>
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="nav-links" id="navlinks">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="">Services</a>
+        <a href="tourism.html">Tourism</a>
+        <a href="">Talabukon Chat</a>
+        <a href="">Contact Us</a>
+        <a href="index.html" onclick="sessionStorage.clear()">Log Out</a>
+    </div>
+    <main>
+        <section id="header">
+            <h2>About Looc</h2>
+            <p style="text-align: justify;">Looc is a coastal municipality located in the southern part of Tablas
+                Island, the largest island in the province of Romblon, Philippines. It is part of the MIMAROPA Region
+                and is known for its natural resources, agricultural activities, fishing industry, local culture, and
+                growing tourism potential. More than a destination for travelers, Looc is a community where people live,
+                work, study, conduct business, and preserve their local traditions. Its coastal location and surrounding
+                hills contribute to its distinctive landscape and provide important resources for the livelihood of its
+                residents.</p>
+        </section>
+        <section>
+            <h3 style="text-align: center;">Municipal Officials</h3>
+            <div class="profile-card">
+                <img src="./assets/mayor.jpg" alt="Mayor" width="200"> <br>
+                <strong>Atty. Lisette M. Arboleda</strong>
+                <p>Municipal Mayor</p>
+            </div>
+            <div class="profile-card">
+                <img src="./assets/vicemayor.jpg" alt="Mayor" width="200"> <br>
+                <strong>Hon. Ismael S. Osorio Jr</strong>
+                <p>Municipal Vice Mayor</p>
+            </div>
+            <div class="profile-card">
+                <img src="./assets/sb1.jpg" alt="Mayor" width="200"> <br>
+                <strong>Hon. Periano R. Bernardo</strong>
+                <p>Sanguniang Bayan</p>
+            </div>
+            <div class="profile-card">
+                <img src="./assets/sb2.jpg" alt="Mayor" width="200"> <br>
+                <strong>Hon. Jonathan T. Gaytano</strong>
+                <p>Sanguniang Bayan</p>
+            </div>
+            <div class="profile-card">
+                <img src="./assets/sb3.jpg" alt="Mayor" width="200"> <br>
+                <strong>Hon. Adrian G. Gaytano</strong>
+                <p>Sanguniang Bayan</p>
+            </div>
+            <div class="profile-card">
+                <img src="./assets/sb4.jpg" alt="Mayor" width="200"> <br>
+                <strong>Hon. Menchie M. Garachico</strong>
+                <p>Sanguniang Bayan</p>
+            </div>
+            <div class="profile-card">
+                <img src="./assets/sb5.jpg" alt="Mayor" width="200"> <br>
+                <strong>Hon. Teodulo G. Tirol, JR</strong>
+                <p>Sanguniang Bayan</p>
+            </div>
+            <div class="profile-card">
+                <img src="./assets/sb6.jpg" alt="Mayor" width="200"> <br>
+                <strong>Hon. Rolando F. Bautista</strong>
+                <p>Sanguniang Bayan</p>
+            </div>
+            <div class="profile-card">
+                <img src="./assets/sb7.jpg" alt="Mayor" width="200"> <br>
+                <strong>Hon. Michael P. Francisco</strong>
+                <p>Sanguniang Bayan</p>
+            </div>
+            <div class="profile-card">
+                <img src="./assets/sb8.jpg" alt="Mayor" width="200"> <br>
+                <strong>Hon. Benjamin F. Galindez, JR</strong>
+                <p>Sanguniang Bayan</p>
+            </div>
+            <div class="profile-card">
+                <img src="./assets/sb9.jpg" alt="Mayor" width="200"> <br>
+                <strong>Hon. Josefina G. Mortel</strong>
+                <p>ABC President</p>
+            </div>
+            <div class="profile-card">
+                <img src="./assets/sb10.jpg" alt="Mayor" width="200"> <br>
+                <strong>Hon. John Kenneth S. Garcia</strong>
+                <p>SK Federation President</p>
+            </div>
+        </section>
+    </main>
+    <script>
+        function toggleMenu() {
+            document.getElementById("overlay").classList.toggle("open");
+            document.getElementById("navlinks").classList.toggle("open");
+        }
+
+        document.getElementById("greeting").innerHTML = `${sessionStorage.getItem("username") ?? 'User'}!`;
+    </script>
+</body>
+
+</html>

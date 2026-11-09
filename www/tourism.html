@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Outfit', Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    nav {
+        background: linear-gradient(to right, #ffff, #a9d2f9);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        box-shadow: 0px 1px 5px grey;
+    }
+
+    .burger {
+        font-size: 24px;
+        color: rgb(206, 130, 130);
+        width: 50px;
+        background-color: none;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background-color: rgb(187, 238, 238);
+        width: 150px;
+        height: 100%;
+        box-sizing: border-box;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+    }
+
+    .nav-links.open {
+        transform: translateX(0);
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: black;
+        display: block;
+        padding: 10px 0px;
+        font-size: 18px;
+    }
+
+    .nav-links:hover {
+        text-decoration: underline;
+    }
+
+    .overlay {
+        background-color: aliceblue;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        z-index: 5;
+    }
+
+    .overlay.open {
+        display: block;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    #LoocImg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0px;
+    }
+
+    #LoocImg img {
+        border-radius: 10px;
+        box-shadow: 0px 2px 5px grey;
+    }
+
+    .statholder,
+    .holder {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .statholder .statcard,
+    .holder .card {
+        background-color: white;
+        width: 48%;
+        border: 1px solid;
+        padding: 10px;
+        margin: 5px 0px;
+        border-radius: 5px;
+        box-shadow: 0px 1px 5px grey;
+    }
+
+    .card {
+        cursor: pointer;
+    }
+
+    #header {
+        margin: 20px 5px;
+        padding: 10px;
+        background-color: #a9d2f9;
+        border-radius: 10px;
+    }
+
+    #header button {
+        width: 100%;
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        font-size: large;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .statsSection {
+        margin: 10px 5px;
+    }
+
+    #spots {
+        width: 90%;
+        background-color: rgb(224, 222, 222);
+        margin: auto;
+        padding: 20px 10px;
+        border-radius: 10px;
+        box-shadow: 0px 3px 5px gray;
+    }
+
+    .content {
+        width: 100%;
+        background-color: white;
+        border-radius: 5px;
+        padding: 20px;
+        margin: 10px auto;
+
+
+    }
+
+    .content p {
+        text-align: justify;
+    }
+    .content img{
+        border-radius: 10px;
+        width: 100%;
+    }
+</style>
+
+<body>
+    <nav>
+        <button class="burger" onclick="toggleMenu()">&#9776;</button>
+        <h1><strong>Looc</strong></h1>
+    </nav>
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="nav-links" id="navlinks">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="">Services</a>
+        <a href="">Tourism</a>
+        <a href="">Talabukon Chat</a>
+        <a href="">Contact Us</a>
+        <a href="index.html" onclick="sessionStorage.clear()">Log Out</a>
+    </div>
+    <main>
+        <section>
+            <h2>Tourism</h2>
+        </section>
+        <section id="spots">
+            <div class="content">
+                <Strong> Coconut Shade Beach Coastline</Strong>
+                <img src="./assets/image.png" alt="">
+                <p>Located in Barangay Buenavista, Looc, Romblon, Coconut Shade Beach Resort offers visitors a relaxing
+                    seaside atmosphere surrounded by tropical greenery and beautiful coastal scenery. The resort's
+                    natural setting, shaded areas, and ocean views make it an appealing destination for travelers
+                    seeking a break from busy city life.
+                    Imagine spending a relaxing afternoon listening to the gentle sound of the waves, enjoying the sea
+                    breeze, and watching the changing colors of the sky. Whether you are traveling with family, spending
+                    time with friends, or looking for a quiet getaway, the resort provides an opportunity to slow down
+                    and appreciate the simple beauty of island living.
+
+                </p>
+                <em><strong>Why visit?</strong></em>
+                <ul>
+                    <li>Enjoy a tropical beachfront atmosphere.</li>
+                    <li>Take memorable photos of the coastline and surrounding greenery.</li>
+                    <li>Spend quality time with family and friends.</li>
+                    <li>Experience the peaceful charm of coastal Looc.</li>
+                </ul>
+            </div>
+            <div class="content">
+                <strong> Looc Municipal Town Plaza </strong>
+                <img src="./assets/Screenshot 2026-10-28 174653.png"  alt="">
+                <p>The Looc Municipal Town Plaza represents the heart of local community life, offering a public space
+                    where residents and visitors can gather, relax, and enjoy the atmosphere of the town. Like many
+                    municipal plazas in the Philippines, it can reflect the community's culture, local traditions, and
+                    everyday social activities.
+                    As daylight fades, the town takes on a different character. Streetlights and illuminated
+                    surroundings can create an inviting nighttime atmosphere, while the nearby streets provide a glimpse
+                    of local life after a busy day. A visit to the plaza can complement a coastal itinerary by giving
+                    travelers a chance to explore the town beyond its beaches and resorts.
+                    For visitors interested in local culture, community spaces, and nighttime photography, the plaza
+                    offers a different perspective on the charm of Looc.
+
+                </p>
+                <em><strong>Why visit?</strong></em>
+                <ul>
+                    <li>Experience the local atmosphere of the town proper.</li>
+                    <li>Explore a public gathering place and its surroundings.</li>
+                    <li>Capture evening photographs of the town.</li>
+                    <li>Appreciate the everyday life and community character of Looc.</li>
+                </ul>
+            </div>
+            <div class="content">
+                <strong>Bantigue Resort</strong>
+                <img src="./assets/s2.png" alt="">
+                <p>Located in Barangay Punta, Looc, Romblon, Bantigue Resort stands out for its distinctive Eiffel Tower
+                    replica and Big Ben-inspired structure. These recognizable landmarks create an unusual sightseeing
+                    experience in a tropical island setting, offering visitors a fun alternative to the usual beach
+                    destinations.
+                    The resort is especially appealing to travelers who enjoy taking photographs, discovering unique
+                    attractions, and sharing memorable travel experiences. Its landmark-inspired structures provide
+                    eye-catching backgrounds for individual portraits, group pictures, and travel documentation.
+                    If the lighting features are operating during your visit, the illuminated structures in the evening
+                    may offer a different visual experience from daytime sightseeing. Visitors should confirm current
+                    access arrangements and operating conditions before traveling.
+
+                </p>
+                <em><strong>Why visit?</strong></em>
+                <ul>
+                    <li>See distinctive Eiffel Tower and Big Ben-inspired replicas.</li>
+                    <li>Take creative and memorable travel photographs.</li>
+                    <li>Enjoy a different type of attraction within Looc.</li>
+                    <li>Add a unique landmark destination to your island itinerary.</li>
+                </ul>
+            </div>
+            <div class="content">
+                <strong>Cummings Highlads Campsite</strong>
+                <img src="./assets/s3.png" alt="">
+                <p>Cummings Highlands, also known in earlier tourism reports as Cummings Highland Eco Park and WaterFun,
+                    is located in Barangay Tuguis, Looc, Romblon. It has been described as a recreational destination
+                    featuring swimming facilities, cottages, and natural surroundings that provide a relaxing setting
+                    for visitors.
+                    For families and groups of friends, the campsite offers an opportunity to spend time outdoors, enjoy
+                    recreational activities, and take a break from the demands of daily life. Its green surroundings and
+                    open spaces can make the visit especially appealing to travelers who prefer a nature-oriented
+                    destination rather than a crowded commercial attraction.
+                    Whether you are planning a day trip or considering a longer stay, checking the current facilities,
+                    availability, and reservation requirements in advance can help you make the most of your visit.
+                </p>
+                <em><strong> Why visit?</strong></em>
+                <ul>
+                    <li>Enjoy swimming and outdoor recreation.</li>
+                    <li> Spend quality time with family and friends.</li>
+                    <li>Appreciate the greenery and relaxing surroundings.</li>
+                    <li>Discover a nature-oriented leisure destination in Looc.</li>
+                </ul>
+            </div>
+            <div class="content">
+                <strong>Looc Fish Sanctuary</strong>
+                <img src="./assets/s4.png" alt="">
+                <p>
+                    Located in the middle of Looc Bay, the Looc Fish Sanctuary is one of the municipality's best-known
+                    ecotourism attractions. The protected marine area covers approximately 48 hectares of coral reef and
+                    provides a habitat for various marine organisms. Visitors can travel by boat to a floating viewing
+                    platform, where they can observe marine life through an opening in the deck. Snorkeling and other
+                    permitted marine activities allow visitors to appreciate the underwater environment more closely.
+                    This destination is especially appealing to nature lovers, families, and travelers who want to
+                    experience the beauty of marine biodiversity. It also highlights the importance of protecting coral
+                    reefs and preserving the marine resources that support local livelihoods.
+                </p>
+                <em><strong>Why visit?</strong></em>
+                <ul>
+                    <li>Observe colorful marine life in a protected area.</li>
+                    <li>Experience a boat trip across Looc Bay.</li>
+                    <li>Enjoy snorkeling, subject to local conditions and regulations.</li>
+                    <li>Learn about marine conservation and sustainable tourism.</li>
+                </ul>
+            </div>
+            <div class="content">
+                <strong>Guinpasilan Island(Ginpasilan Islet)</strong>
+                <img src="./assets/s5.png" alt="">
+                <p>
+                    Ginpasilan Islet, located in Barangay Agojo, Looc, has been identified by the local government as an
+                    emerging tourism attraction. Its island setting and surrounding coastal scenery make it an
+                    interesting destination for visitors who want to explore beyond the town center and discover more of
+                    Looc's natural landscape.
+                    For travelers who appreciate scenic boat rides, coastal photography, and discovering less familiar
+                    destinations, an excursion to the islet can offer a different perspective on island life. Because it
+                    is a small island destination, visitors should arrange transportation with local boat operators and
+                    confirm access conditions before visiting.
+                </p>
+                <em><strong>Why visit?</strong></em>
+                <ul>
+                    <li>Discover a lesser-known destination in Looc.</li>
+                    <li>Enjoy scenic views of the surrounding waters.</li>
+                    <li>Capture island and coastal landscape photographs.</li>
+                    <li>Experience a boat excursion organized by local operators.
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+                <strong>Agojo and Buenaavesta Beaches</strong>
+                <img src="./assets/s6.png" alt="">
+                <p>
+                    The coastal barangays of Agojo and Buenavista are among the areas associated with the seaside
+                    scenery of Looc. These communities contribute to the municipality's coastal character, offering
+                    opportunities to appreciate the natural environment and experience everyday life in a Philippine
+                    island community. Beaches in these areas are also mentioned in travel references about Looc.
+                    For visitors who enjoy discovering quieter coastal locations, exploring these areas can add variety
+                    to a trip beyond the more established resorts. Depending on the specific shoreline, weather, and
+                    local access conditions, travelers may enjoy sightseeing, photography, and relaxing by the sea.
+                </p>
+                <em><strong> Why visit?</strong></em>
+                <ul>
+                    <li>Discover coastal scenery outside the main town center.</li>
+                    <li>Enjoy opportunities for seaside photography.</li>
+                    <li>Experience the atmosphere of local fishing communities.</li>
+                    <li>Explore additional coastal areas around Looc Bay.</li>
+                </ul>
+            </div>
+            <div class="content">
+                <strong>Villa M. My Exclusive Resort</strong>
+                <img src="./assets/s7.png" alt="">
+                <p>Villa M, My Exclusive Resort, is a distinctive resort destination in Barangay Camandag, Looc,
+                    Romblon. It has been described as featuring Mediterranean-inspired architecture, lush tropical
+                    gardens, coconut trees, flowering bougainvillea, and an infinity pool overlooking the surrounding
+                    landscape.
+                    The resort offers a different atmosphere from a typical beachfront destination, combining
+                    architectural character with tropical scenery. Its landscaped surroundings and pool area make it
+                    appealing to travelers who enjoy relaxing getaways, scenic photographs, and a more private resort
+                    experience.
+                </p>
+                <em><strong>Why visit?</strong></em>
+                <ul>
+                    <li>Appreciate Mediterranean-inspired architecture.</li>
+                    <li>Enjoy tropical gardens and landscaped surroundings.</li>
+                    <li> Take photographs of the resort's distinctive design.</li>
+                    <li>Experience a relaxing resort atmosphere.</li>
+                </ul>
+            </div>
+            <div class="content">
+                <strong>Port of Looc & Looc Bay Sunset</strong>
+                <img src="./assets/s8.png" alt="">
+                <p>The Port of Looc is an important waterfront destination and a gateway to the surrounding coastal
+                    attractions. Beyond its role in local maritime activities, the port offers visitors a glimpse of the
+                    everyday life of a coastal community, where boats, fishermen, and the sea are closely connected. It
+                    also serves as an access point for trips to the Looc Bay Marine Refuge and Sanctuary.
+                    As the afternoon turns to evening, the bay becomes an inviting setting for travelers who appreciate
+                    peaceful waterfront scenery. The warm glow of the setting sun, the silhouettes of boats, and the
+                    expansive sea can create a memorable backdrop for photographs and quiet moments of reflection.
+                    For photographers and nature lovers, visiting near sunset can be a wonderful way to appreciate the
+                    coastal character of Looc, provided that weather and local conditions are favorable.
+                </p>
+                <em><strong> Why visit?</strong></em>
+                <ul>
+                    <li>Capture beautiful harbor and seaside photographs.</li>
+                    <li>Experience the atmosphere of a traditional coastal community.</li>
+                    <li>Enjoy the scenery around Looc Bay.</li>
+                    <li> Use the port as a starting point for marine sanctuary excursions.</li>
+                </ul>
+            </div>
+            <div class="content">
+                <strong>Looc Port Lighthouse</strong>
+                <img src="./assets/s9.png" alt="">
+                <p>
+                    The Looc Port Lighthouse is a waterfront landmark near Looc Pier. It complements the port's maritime
+                    scenery and provides another subject for photography beyond the usual beach and resort views. The
+                    port area also serves as the departure point for visitors heading to Looc Bay's marine sanctuary.
+                    For travelers interested in coastal infrastructure and local maritime life, the lighthouse and
+                    surrounding waterfront can be included in a short sightseeing stop. Since it is associated with a
+                    working port, visitors should respect restricted areas and follow local safety guidance.
+                </p>
+                <em><strong>Why visit?</strong></em>
+                <ul>
+                    <li>Photograph a coastal navigation landmark.</li>
+                    <li>Enjoy views of the waterfront and port.</li>
+                    <li>Learn about the role of the harbor in local transportation.</li>
+                    <li>Combine the stop with a trip to Looc Bay.</li>
+                </ul>
+            </div>
+            <div class="content">
+                <strong> Looc's Small Waterfall and Freshwater Streams</strong>
+                <img src="./assets/s10.png" alt="">
+                <p>Beyond its coastline, Looc has been described in coastal resource management references as having
+                    natural features such as creeks, rivers, caves, and a small waterfall. These inland environments
+                    provide a contrast to the municipality's beaches, marine sanctuaries, and resorts.
+                    For visitors who enjoy nature photography and outdoor exploration, freshwater streams and small
+                    waterfalls can offer opportunities to appreciate the area's vegetation, flowing water, and peaceful
+                    surroundings. However, the specific waterfall and stream locations need to be confirmed with the
+                    local tourism office before they can be recommended as established tourist destinations.
+                </p>
+                <em><strong>Why explore?</strong></em>
+                <ul>
+                    <li>Discover natural scenery beyond the coastline.</li>
+                    <li>Photograph freshwater landscapes and tropical vegetation.</li>
+                    <li>Appreciate the diversity of Looc's natural environment.</li>
+                    <li>Consider an outdoor excursion with local guidance.</li>
+                </ul>
+            </div>
+            <div class="content">
+                <strong>Kapihan Peak - Hiking and Scenic Viewpoint</strong>
+                <img src="./assets/s11.png" alt="">
+                <p>Kapihan Peak is a scenic hiking destination in Looc, Romblon, offering visitors an opportunity to
+                    enjoy the island’s natural landscapes from an elevated viewpoint. It is described as a
+                    beginner-friendly uphill hike near the town proper, making it a good choice for travelers who want
+                    an outdoor adventure beyond the coastline.
+                </p>
+                <em><strong>Why Visit?</strong></em>
+                <ul>
+                    <li>Enjoy a short hiking adventure.</li>
+                    <li>Experience the peaceful atmosphere of the island’s highlands.</li>
+                    <li>Capture scenic nature photographs.</li>
+                    <li>Explore a different side of Looc beyond its beaches.</li>
+                </ul>
+            </div>
+        </section>
+
+
+    </main>
+
+     <script>
+        function toggleMenu() {
+            document.getElementById("overlay").classList.toggle("open");
+            document.getElementById("navlinks").classList.toggle("open");
+        }
+
+        document.getElementById("greeting").innerHTML = `${sessionStorage.getItem("username") ?? 'User'}!`;
+    </script>
+</body>
+
+</html>
