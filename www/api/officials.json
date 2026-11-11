@@ -1,9 +1,64 @@
 {
     "officials": [
         {
-            "name": "",
-            "img": "",
-            "position": ""
+            "name": "ATTY. Lisette M. Arboleda",
+            "positons": "Municipal Mayor",
+            "image": "mayor.jpg"
+        },
+        {
+            "name": "HON. Ismael S. Osorio,JR.",
+            "positons": "Municipal V.Mayor",
+            "image": "vicemayor.jpg"
+        },
+        {
+            "name": "HON. Periano R. Bernando",
+            "positons": "Sanguniang Bayan",
+            "image": "sb1.jpg"
+        },
+        {
+            "name": "HON. Jonathan T. Gaytano",
+            "positons": "Sanguniang Bayan",
+            "image": "sb2.jpg"
+        },
+        {
+            "name": "HON. Adrian G. Gaytano",
+            "positons": "Sanguniang Bayan",
+            "image": "sb3.jpg"
+        },
+        {
+            "name": "HON. Menchie M. Garachico",
+            "positons": "Sanguniang Bayan",
+            "image": "sb4.jpg"
+        },
+        {
+            "name": "HON. Teodulo G. Tirol,JR.",
+            "positons": "Sanguniang Bayan",
+            "image": "sb5.jpg"
+        },
+        {
+            "name": "HON. Rolando F. Bautista",
+            "positons": "Sanguniang Bayan",
+            "image": "sb6.jpg"
+        },
+        {
+            "name": "HON. Michael P. Francisco",
+            "positons": "Sanguniang Bayan",
+            "image": "sb7.jpg"
+        },
+        {
+            "name": "HON. Benjamin F. Galindez,JR.",
+            "positons": "Sanguniang Bayan",
+            "image": "sb8.jpg"
+        },
+        {
+            "name": "HON. Josefina Mortel",
+            "positons": "ABC President",
+            "image": "sb9.jpg"
+        },
+        {
+            "name": "HON. John Kenneth S. Garcia",
+            "positons": "SK Federation President",
+            "image": "sb10.jpg"
         }
     ]
 }
