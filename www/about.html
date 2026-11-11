@@ -177,68 +177,7 @@
                 hills contribute to its distinctive landscape and provide important resources for the livelihood of its
                 residents.</p>
         </section>
-        <section>
-            <h3 style="text-align: center;">Municipal Officials</h3>
-            <div class="profile-card">
-                <img src="./assets/mayor.jpg" alt="Mayor" width="200"> <br>
-                <strong>Atty. Lisette M. Arboleda</strong>
-                <p>Municipal Mayor</p>
-            </div>
-            <div class="profile-card">
-                <img src="./assets/vicemayor.jpg" alt="Mayor" width="200"> <br>
-                <strong>Hon. Ismael S. Osorio Jr</strong>
-                <p>Municipal Vice Mayor</p>
-            </div>
-            <div class="profile-card">
-                <img src="./assets/sb1.jpg" alt="Mayor" width="200"> <br>
-                <strong>Hon. Periano R. Bernardo</strong>
-                <p>Sanguniang Bayan</p>
-            </div>
-            <div class="profile-card">
-                <img src="./assets/sb2.jpg" alt="Mayor" width="200"> <br>
-                <strong>Hon. Jonathan T. Gaytano</strong>
-                <p>Sanguniang Bayan</p>
-            </div>
-            <div class="profile-card">
-                <img src="./assets/sb3.jpg" alt="Mayor" width="200"> <br>
-                <strong>Hon. Adrian G. Gaytano</strong>
-                <p>Sanguniang Bayan</p>
-            </div>
-            <div class="profile-card">
-                <img src="./assets/sb4.jpg" alt="Mayor" width="200"> <br>
-                <strong>Hon. Menchie M. Garachico</strong>
-                <p>Sanguniang Bayan</p>
-            </div>
-            <div class="profile-card">
-                <img src="./assets/sb5.jpg" alt="Mayor" width="200"> <br>
-                <strong>Hon. Teodulo G. Tirol, JR</strong>
-                <p>Sanguniang Bayan</p>
-            </div>
-            <div class="profile-card">
-                <img src="./assets/sb6.jpg" alt="Mayor" width="200"> <br>
-                <strong>Hon. Rolando F. Bautista</strong>
-                <p>Sanguniang Bayan</p>
-            </div>
-            <div class="profile-card">
-                <img src="./assets/sb7.jpg" alt="Mayor" width="200"> <br>
-                <strong>Hon. Michael P. Francisco</strong>
-                <p>Sanguniang Bayan</p>
-            </div>
-            <div class="profile-card">
-                <img src="./assets/sb8.jpg" alt="Mayor" width="200"> <br>
-                <strong>Hon. Benjamin F. Galindez, JR</strong>
-                <p>Sanguniang Bayan</p>
-            </div>
-            <div class="profile-card">
-                <img src="./assets/sb9.jpg" alt="Mayor" width="200"> <br>
-                <strong>Hon. Josefina G. Mortel</strong>
-                <p>ABC President</p>
-            </div>
-            <div class="profile-card">
-                <img src="./assets/sb10.jpg" alt="Mayor" width="200"> <br>
-                <strong>Hon. John Kenneth S. Garcia</strong>
-                <p>SK Federation President</p>
-            </div>
+        <section id="officials">
         </section>
     </main>
     <script>
@@ -247,7 +186,37 @@
             document.getElementById("navlinks").classList.toggle("open");
         }
 
-        document.getElementById("greeting").innerHTML = `${sessionStorage.getItem("username") ?? 'User'}!`;
+        async function loadOfficials() {
+            const officials = document.getElementById("officials");
+            officials.innerHTML += `<h3 style="text-align: center;">Municipal Officials</h3>`;
+            try {
+                const response = await fetch("./api/officials.json");
+                if (!response.ok) {
+                    console.log("Failed to Load officials");
+                    return;
+                }
+                const data = await response.json();
+
+                data.officials.forEach(person => {
+                    officials.innerHTML += `
+                        <div class="profile-card">
+                            <img src="./assets/${person.image}" alt="Mayor" width="200"> <br>
+                            <strong>${person.name}</strong>
+                            <p>${person.positons}</p>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error(error);
+                officials.innerHTML += `
+                    <div class="profile-card">
+                        <strong>Failed to Load Officials</strong>
+                    </div>
+                `;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadOfficials);
     </script>
 </body>
 
