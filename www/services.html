@@ -32,6 +32,16 @@
         box-shadow: 0px 1px 5px grey;
     }
 
+    footer {
+        background: linear-gradient(to right, #ffff, #a9d2f9);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        box-shadow: 0px -1px 5px grey;
+    }
+
     .burger {
         font-size: 24px;
         color: rgb(206, 130, 130);
@@ -173,7 +183,7 @@
 <body>
     <nav>
         <button class="burger" onclick="toggleMenu()">&#9776;</button>
-        <h1><strong>Looc</strong></h1>
+        <h1><strong>OneLooc</strong></h1>
     </nav>
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
     <div class="nav-links" id="navlinks">
@@ -244,13 +254,14 @@
             </div>
         </section>
     </main>
+    <footer>
+        <p><strong>Built by BSIT 3 | Block 1</strong></p>
+    </footer>
     <script>
         function toggleMenu() {
             document.getElementById("overlay").classList.toggle("open");
             document.getElementById("navlinks").classList.toggle("open");
         }
-
-        document.getElementById("greeting").innerHTML = `${sessionStorage.getItem("username") ?? 'User'}!`;
     </script>
 </body>
 </html>

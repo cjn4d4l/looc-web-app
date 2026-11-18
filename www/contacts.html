@@ -32,6 +32,16 @@
         box-shadow: 0px 1px 5px grey;
     }
 
+    footer {
+        background: linear-gradient(to right, #ffff, #a9d2f9);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        box-shadow: 0px -1px 5px grey;
+    }
+
     .burger {
         font-size: 24px;
         color: rgb(206, 130, 130);
@@ -173,7 +183,7 @@
 <body>
     <nav>
         <button class="burger" onclick="toggleMenu()">&#9776;</button>
-        <h1><strong>Looc</strong></h1>
+        <h1><strong>OneLooc</strong></h1>
     </nav>
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
     <div class="nav-links" id="navlinks">
@@ -191,6 +201,9 @@
     <section id="contacts">
         
     </section>
+    <footer>
+        <p><strong>Built by BSIT 3 | Block 1</strong></p>
+    </footer>
     <script>
         const contacts = document.getElementById("contacts");
         function toggleMenu() {

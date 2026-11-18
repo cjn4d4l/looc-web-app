@@ -77,6 +77,7 @@
             <label for="password">Password</label>
             <input type="password" id="password" placeholder="********">
         </div>
+        <a href="signup.html">Signup Here</a> <br>
         <input type="checkbox" id="showpassword"> Show Password <br>    
         <button id="logbtn"><strong>Log-In</strong></button>
         <p id="message"></p>
@@ -93,21 +94,28 @@
         })
 
         document.getElementById("logbtn").addEventListener("click", () => {
-            const user = {
-                username: document.getElementById("username").value,
-                password: document.getElementById("password").value
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value;
+            const message = document.getElementById("message");
+
+            let users;
+            try {
+                const storedUsers = localStorage.getItem("users");
+                users = storedUsers ? JSON.parse(storedUsers) : [];
+            } catch (error) {
+                message.textContent = "Unable to read saved accounts. Please try signing up again.";
+                return;
             }
 
-            const userCred = {
-                username: "cj1234",
-                password: "4321jc"
-            }
+            const matchingUser = Array.isArray(users)
+                ? users.find(user => user && user.username === username && user.password === password)
+                : null;
 
-            if (user.username == userCred.username && user.password == userCred.password) {
-                sessionStorage.setItem("username", user.username);
+            if (matchingUser) {
+                sessionStorage.setItem("username", username);
                 window.location.href = "home.html";
             } else {
-                document.getElementById("message").innerHTML = "Invalid Credentials!";
+                message.textContent = "Invalid Credentials!";
             }
         })
     </script>

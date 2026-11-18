@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Outfit', Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    nav {
+        background: linear-gradient(to right, #ffff, #a9d2f9);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        box-shadow: 0px 1px 5px grey;
+    }
+
+    footer {
+        background: linear-gradient(to right, #ffff, #a9d2f9);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        box-shadow: 0px -1px 5px grey;
+    }
+
+    .burger {
+        font-size: 24px;
+        color: rgb(206, 130, 130);
+        width: 50px;
+        background-color: none;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background-color: rgb(187, 238, 238);
+        width: 150px;
+        height: 100%;
+        box-sizing: border-box;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+    }
+
+    .nav-links.open {
+        transform: translateX(0);
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: black;
+        display: block;
+        padding: 10px 0px;
+        font-size: 18px;
+    }
+
+    .nav-links:hover {
+        text-decoration: underline;
+    }
+
+    .overlay {
+        background-color: aliceblue;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        z-index: 5;
+    }
+
+    .overlay.open {
+        display: block;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    #map {
+        width: 100%;
+        height: 60vh;
+        min-height: 400px;
+    }
+
+    #LoocImg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0px;
+    }
+
+    #LoocImg img {
+        border-radius: 10px;
+        box-shadow: 0px 2px 5px grey;
+    }
+
+    .statholder, .holder {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .statholder .statcard, .holder .card {
+        background-color: white;
+        width: 48%;
+        border: 1px solid;
+        padding: 10px;
+        margin: 5px 0px;
+        border-radius: 5px;
+        box-shadow: 0px 1px 5px grey;
+    }
+
+    .card {
+        cursor: pointer;
+    }
+
+    #header {
+        margin: 20px 5px;
+        padding: 10px;
+        background-color: #a9d2f9;
+        border-radius: 10px;
+        box-shadow: 0px 2px 5px grey;
+    }
+
+    #header button {
+        width: 100%;
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        font-size: large;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .statsSection {
+        margin: 10px 5px;
+    }
+</style>
+<body>
+    <nav>
+        <button class="burger" onclick="window.location.href='home.html'">&larr;</button>
+        <h1><strong>OneLooc</strong></h1>
+    </nav>
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+    <div class="nav-links" id="navlinks">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="tourism.html">Tourism</a>
+        <a href="">Talabukon Chat</a>
+        <a href="contacts.html">Contact Us</a>
+        <a href="index.html" onclick="sessionStorage.clear()">Log Out</a>
+    </div>
+    <main id="map">
+    </main>
+    <section>
+        <center><h3>Interactive Map of Looc</h3></center>
+    </section>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        const map = L.map("map").setView([12.2602, 121.9916], 15);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        L.marker([12.2602, 121.9916]).addTo(map)
+            .bindPopup("12.2602, 121.9916");
+    </script>
+</body>
+</html>

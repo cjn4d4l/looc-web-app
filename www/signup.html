@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'outfit', Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    main {
+        background: linear-gradient(to right, #ffff, #a9d2f9);
+        margin: 5vh auto;
+        width: 80vw;
+        height: auto;
+        background-color: white;
+        padding: 60px 20px;
+        border: 1px solid rgb(204, 204, 204);
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0px 3px 3px grey;
+    }
+
+    main h1 {
+        margin: 20px auto;
+    }
+
+    main div {
+        margin: 10px 10px ;
+    }
+
+    main div input {
+        width: 100%;
+        height: 40px;
+        border: 1px solid grey;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    main button {
+        margin: 15px auto;
+        border: 2px solid blue;
+        border-radius: 5px;
+        width: 140px;
+        height: 40px;
+        cursor: pointer;
+        background-color: rgb(94, 158, 240);
+    }
+</style>
+
+<body>
+    <main>
+        <img src="./assets/icon-only.png" alt="logo Looc" width="100px">
+        <h1>Sign In</h1>
+        <h2>To Looc App</h2>
+        <div style="text-align: left;">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="example1234">
+        </div>
+        <div style="text-align: left;">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="********">
+        </div>
+        Have an account? <a href="index.html">Login</a> <br>  
+        <input type="checkbox" id="showpassword"> Show Password <br>    
+        <button id="logbtn"><strong>Log-In</strong></button>
+        <p id="message"></p>
+    </main>
+
+    <script>
+        const signupMessage = document.getElementById("message");
+        document.querySelector("main h1").textContent = "Sign Up";
+        document.getElementById("logbtn").innerHTML = "<strong>Sign-Up</strong>";
+
+        document.getElementById("showpassword").addEventListener("change", () => {
+            const showPassword = document.getElementById("showpassword");
+            if (showPassword.checked) {
+                document.getElementById("password").type = "text";
+            } else {
+                document.getElementById("password").type = "password";
+            }
+        })
+
+        document.getElementById("logbtn").addEventListener("click", () => {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value;
+
+            if (!username || !password) {
+                signupMessage.textContent = "Enter a username and password.";
+                return;
+            }
+
+            let users;
+            try {
+                const storedUsers = localStorage.getItem("users");
+                users = storedUsers ? JSON.parse(storedUsers) : [];
+            } catch (error) {
+                signupMessage.textContent = "Unable to read saved accounts. Please clear the invalid account data and try again.";
+                return;
+            }
+
+            if (!Array.isArray(users)) {
+                signupMessage.textContent = "Unable to read saved accounts. Please clear the invalid account data and try again.";
+                return;
+            }
+
+            if (users.some(user => user && user.username === username)) {
+                signupMessage.textContent = "That username is already taken.";
+                return;
+            }
+
+            users.push({ username, password });
+            try {
+                localStorage.setItem("users", JSON.stringify(users));
+            } catch (error) {
+                signupMessage.textContent = "Unable to save your account in this browser.";
+                return;
+            }
+
+            window.location.href = "index.html";
+        })
+    </script>
+</body>
+
+</html>
